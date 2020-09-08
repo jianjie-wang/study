@@ -1,0 +1,56 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/wang_jian_jie?characterEncoding=utf-8&useSSL=false&&serverTimezone=UTC
+    #    1、serverTimezone是配置时间区域，不然启动会报错
+    #    2、url 配置规则 jdbc:mysql:// + ip地址 + 端口 / 数据库名字 ? 字符编码 && 是否使用SSL && 时间区域
+    #    3、useSSL MySQL在高版本需要指明是否进行SSL连接
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: MYSQL
+    show-sql: true
+    properties:
+      hibernate.id.new_generator_mappings: true
+      hibernate.connection.provider_disables_autocommit: false
+      hibernate.generate_statistics: true
+      hibernate.jdbc.batch_size: 50
+      hibernate.jdbc.batch_versioned_data: true
+      hibernate.order_inserts: true
+      hibernate.order_updates: true
+
+
+server:
+  port: 8098
+wjj:
+  name: jj
+
+jhipster:
+  clientApp:
+    name: 'EsenFeedback2App'
+  async:
+    core-pool-size: 2
+    max-pool-size: 50
+    queue-capacity: 10000
+    # By default CORS is disabled. Uncomment to enable.
+    #cors:
+    #allowed-origins: "*"
+    #allowed-methods: "*"
+    #allowed-headers: "*"
+    #exposed-headers: "Authorization,Link,X-Total-Count"
+    #allow-credentials: true
+    #max-age: 1800
+  mail:
+    from: EsenFeedback2@localhost
+  swagger:
+    default-include-pattern: /.*api/.*
+    title: EsenFeedback2 API
+    description: EsenFeedback2 API documentation
+    version: 0.0.1
+    terms-of-service-url:
+    contact-name:
+    contact-url:
+    contact-email:
+    license:
+    license-url:
