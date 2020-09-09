@@ -25,6 +25,15 @@ public class Student {
     @Column(name = "id", unique = true, nullable = false)
     private String id;
 
+    @Column(name = "name", length = 255)
+    private String name;
+
+    @Column(name = "age", length = 11)
+    private Integer age;
+
+    @Column(name = "school", length = 255)
+    private String school;
+
     @CreatedBy
     @Column(name = "created_by", length = 50, updatable = false)
     @JsonIgnore
@@ -48,6 +57,31 @@ public class Student {
 //    @ApiModelProperty(value = "删除标记")
     @Column(name = "del_flag")
     private Boolean delFlag;
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getSchool() {
+        return school;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
+    }
 
     public String getId() {
         return id;
@@ -101,6 +135,9 @@ public class Student {
     public String toString() {
         return "Student{" +
                 "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", school='" + school + '\'' +
                 ", createdBy='" + createdBy + '\'' +
                 ", createdTime=" + createdTime +
                 ", lastModifiedBy='" + lastModifiedBy + '\'' +

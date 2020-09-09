@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
+import org.springframework.retry.annotation.EnableRetry;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -19,6 +20,7 @@ import java.util.Date;
 @ComponentScan(basePackages = "com.example")
 @ServletComponentScan(basePackages = "com.example")
 @SpringBootApplication
+@EnableRetry
 public class StudyApplication {
     private static final Logger log = LoggerFactory.getLogger(StudyApplication.class);
 

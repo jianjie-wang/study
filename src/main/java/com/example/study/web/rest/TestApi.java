@@ -76,6 +76,7 @@ public class TestApi {
         return new ResponseEntity<>(student,httpHeaders, HttpStatus.OK);
     }
 
+    @Deprecated
     @ApiOperation("完整获取中国地区IP")
     @GetMapping("/aa")
     public ResponseEntity<List<String>> aa(){
