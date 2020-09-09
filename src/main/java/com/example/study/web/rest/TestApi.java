@@ -78,30 +78,30 @@ public class TestApi {
 
     @ApiOperation("完整获取中国地区IP")
     @GetMapping("/aa")
-    public List<String> aa(){
+    public ResponseEntity<List<String>> aa(){
         System.out.println("stat aa");
         List<String> list = stringSplitService.jie();
         System.out.println("end aa");
         System.out.println(list);
-        return list;
+        return ResponseEntity.ok(list);
     }
 
     @ApiOperation("HttpURLConnection获取中国地区IP")
     @GetMapping("/bb")
-    public String bb(){
+    public ResponseEntity<String> bb(){
         System.out.println("stat bb");
         String s = stringSplitService.dididi();
         System.out.println("end  bb");
-        return s;
+        return ResponseEntity.ok(s);
     }
 
     @ApiOperation("计算当天创建的人数")
     @GetMapping("/count")
-    public Integer count(@RequestParam(required = true) String name){
+    public ResponseEntity<Integer> count(@RequestParam(required = true) String name){
         System.out.println("stat bb");
         Integer s = studentService.countStudent(name);
         System.out.println("end  bb");
-        return s;
+        return ResponseEntity.ok(s);
     }
 
     @ApiOperation("导出列表")
