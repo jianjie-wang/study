@@ -35,16 +35,16 @@ public class SetService {
 
         Set<String> hashset = new HashSet<>();
         hashset.add("王健杰");
-        hashset.add("王豪杰");
-        hashset.add("时玉颖");
-        hashset.add("王俊刚");
+        hashset.add("王健林");
+        hashset.add("健哥哥");
+        hashset.add("嘀嘀嘀");
         System.out.println("HashSet"+hashset);
 
         Set<String> treeset = new TreeSet<>();
         treeset.add("王健杰");
-        treeset.add("王豪杰");
-        treeset.add("时玉颖");
-        treeset.add("王俊刚");
+        treeset.add("王健林");
+        treeset.add("健哥哥");
+        treeset.add("嘀嘀嘀");
         System.out.println("TreeSet"+treeset);
     }
 }

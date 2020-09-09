@@ -1,4 +1,4 @@
-package com.example.study.service.algorithm;
+package com.example.study.leetcode;
 
 import java.util.HashMap;
 import java.util.Map;

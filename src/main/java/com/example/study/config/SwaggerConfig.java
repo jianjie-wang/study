@@ -26,13 +26,16 @@ public class SwaggerConfig {
     public Docket createRestApi(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
-                .select().apis(RequestHandlerSelectors.basePackage("com.example.study.web.rest")) // 根据个人项目配置扫描Controller包
-                .paths(PathSelectors.any()).build();
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.example.study.web.rest")) // 根据个人项目配置扫描Controller包
+                .paths(PathSelectors.any())
+                .build();
     }
 
     private ApiInfo apiInfo(){
         //Swagger页面上的个人定制配置
-        return new ApiInfoBuilder().title("Swagger2-UI")
+        return new ApiInfoBuilder()
+                .title("Swagger2-UI")
                 .description("日常代码练习文档")
                 .termsOfServiceUrl("http://swagger.io/")
                 .contact(new Contact("jian", "https://github.com/jianjie-wang/study", "398971654@qq.com"))
