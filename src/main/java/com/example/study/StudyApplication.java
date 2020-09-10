@@ -1,6 +1,5 @@
 package com.example.study;
 
-import com.example.study.Utils.DateUtil;
 import com.example.study.config.DefaultProfileUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -14,8 +13,6 @@ import org.springframework.retry.annotation.EnableRetry;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.time.Instant;
-import java.util.Date;
 
 @ComponentScan(basePackages = "com.example")
 @ServletComponentScan(basePackages = "com.example")
@@ -26,30 +23,8 @@ public class StudyApplication {
 
     public static void main(String[] args) {
 //        SpringApplication.run(StudyApplication.class, args);
-
         SpringApplication app = new SpringApplication(StudyApplication.class);
         DefaultProfileUtil.addDefaultProfile(app);
-
-
-        Date yesterdayDate = Date.from(Instant.now());
-        Instant startTime = DateUtil.formatStartTime(yesterdayDate.getTime());
-        Instant endTime = DateUtil.formatEndTime(yesterdayDate.getTime());
-
-        System.out.println(startTime);
-        System.out.println(endTime);
-
-        Instant startTime4 = DateUtil.formatStartTime(System.currentTimeMillis());
-        Instant endTime4 = DateUtil.formatEndTime(System.currentTimeMillis());
-
-        System.out.println(startTime4);
-        System.out.println(endTime4);
-
-        if (3>= 2){
-            System.out.println("dfdfd");
-        }
-
-
-
         Environment env = app.run(args).getEnvironment();
         logApplicationStartup(env);
 

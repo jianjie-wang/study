@@ -25,32 +25,3 @@ server:
   port: 8098
 wjj:
   name: jj
-
-jhipster:
-  clientApp:
-    name: 'EsenFeedback2App'
-  async:
-    core-pool-size: 2
-    max-pool-size: 50
-    queue-capacity: 10000
-    # By default CORS is disabled. Uncomment to enable.
-    #cors:
-    #allowed-origins: "*"
-    #allowed-methods: "*"
-    #allowed-headers: "*"
-    #exposed-headers: "Authorization,Link,X-Total-Count"
-    #allow-credentials: true
-    #max-age: 1800
-  mail:
-    from: EsenFeedback2@localhost
-  swagger:
-    default-include-pattern: /.*api/.*
-    title: EsenFeedback2 API
-    description: EsenFeedback2 API documentation
-    version: 0.0.1
-    terms-of-service-url:
-    contact-name:
-    contact-url:
-    contact-email:
-    license:
-    license-url:
