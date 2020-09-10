@@ -1,3 +1,2 @@
 # study
-日常练习
-http://localhost:8098/swagger-ui.html
+本地swagger访问地址：localhost:8098/swagger-ui.html
