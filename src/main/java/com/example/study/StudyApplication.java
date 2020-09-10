@@ -17,7 +17,7 @@ import java.net.UnknownHostException;
 @ComponentScan(basePackages = "com.example")
 @ServletComponentScan(basePackages = "com.example")
 @SpringBootApplication
-@EnableRetry
+@EnableRetry  //启用重试功能
 public class StudyApplication {
     private static final Logger log = LoggerFactory.getLogger(StudyApplication.class);
 
