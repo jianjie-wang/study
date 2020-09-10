@@ -1,4 +1,4 @@
-package com.example.study.service.aggregate;
+package com.example.study.practice.aggregate;
 
 import org.springframework.stereotype.Service;
 

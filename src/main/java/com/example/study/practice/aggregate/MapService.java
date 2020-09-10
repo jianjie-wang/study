@@ -1,4 +1,4 @@
-package com.example.study.service.aggregate;
+package com.example.study.practice.aggregate;
 
 import java.util.HashMap;
 import java.util.Hashtable;

@@ -1,11 +1,10 @@
-package com.example.study.service.optionalService;
+package com.example.study.practice.optionalService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 
 /**

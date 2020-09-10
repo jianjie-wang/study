@@ -1,4 +1,4 @@
-package com.example.study.service;
+package com.example.study.practice.linkedlist;
 
 /**
  * @program: study

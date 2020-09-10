@@ -1,4 +1,4 @@
-package com.example.study.service.thread;
+package com.example.study.practice.thread;
 
 import java.util.concurrent.*;
 

@@ -1,4 +1,4 @@
-package com.example.study.service.streamLamada;
+package com.example.study.practice.streamLamada;
 
 import com.example.study.service.DTO.StudentDTO;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.example.study.service.time;
+package com.example.study.practice.time;
 
 import com.example.study.Utils.DateUtil;
 

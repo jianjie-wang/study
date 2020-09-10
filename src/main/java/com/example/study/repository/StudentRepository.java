@@ -13,5 +13,7 @@ import java.time.Instant;
  * @create: 2020-09-08 18:49
  **/
 public interface StudentRepository extends JpaRepository<Student, String>, JpaSpecificationExecutor<Student> {
+
     Integer countBySchoolAndCreatedTimeBetween(String name, Instant startTime,Instant endTime);
+
 }
