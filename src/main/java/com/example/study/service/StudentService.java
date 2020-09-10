@@ -25,13 +25,13 @@ public class StudentService {
     }
 
 
-    public Integer countStudent(String name){
+    public Integer countStudent(String schoolName){
         Instant startTime = DateUtil.formatStartTime(System.currentTimeMillis());
         Instant endTime = DateUtil.formatEndTime(System.currentTimeMillis());
 
-//        Integer times =studentRepository.countByNameAndCreatedTimeBetween(name, startTime, endTime);
+        Integer times =studentRepository.countBySchoolAndCreatedTimeBetween(schoolName, startTime, endTime);
 
-        return null;
+        return times;
     }
 
 

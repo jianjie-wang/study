@@ -1,5 +1,7 @@
 package com.example.study.service.DTO;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 
 /**
@@ -9,10 +11,13 @@ import java.io.Serializable;
  * @create: 2020-07-02 11:35
  **/
 public class StudentDTO implements Serializable {
+    @ApiModelProperty(value = "姓名")
     private String name;
 
+    @ApiModelProperty(value = "学校")
     private String School;
 
+    @ApiModelProperty(value = "年龄")
     private int age;
 
     public String getName() {

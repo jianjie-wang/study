@@ -40,13 +40,9 @@ public class MysqlService {
     }
 
     public List<StudentDTO> findStudent(){
-        log.debug("ewefjdjfdkfjdkfk0");
-        List<Student> student;
-        List<StudentDTO> studentDTO ;
-        student = studentRepository.findAll();
-        studentDTO = studentMapper.toDto(student);
-        System.out.println(studentDTO);
-        return studentDTO;
+        List<Student> students = studentRepository.findAll();
+        List<StudentDTO> studentDTOs = studentMapper.toDto(students);
+        return studentDTOs;
     }
 
     public StudentDTO findAStudent(String id){

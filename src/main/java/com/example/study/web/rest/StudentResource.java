@@ -8,6 +8,7 @@ import com.example.study.service.mysql.MysqlService;
 import com.example.study.service.string.StringSplitService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,8 @@ import java.util.List;
 @Api(tags = "测试接口信息")
 @RestController
 @RequestMapping("/user")
-public class TestApi {
-    private final static Logger log = LoggerFactory.getLogger(TestApi.class);
+public class StudentResource {
+    private final static Logger log = LoggerFactory.getLogger(StudentResource.class);
 
     @Autowired
     private MysqlService mysqlService;
@@ -38,18 +39,19 @@ public class TestApi {
     @Autowired
     StringSplitService stringSplitService;
 
-    public TestApi(StudentService studentService) {
+    public StudentResource(StudentService studentService) {
         this.studentService = studentService;
     }
 
+    @ApiOperation("获取单个学生信息")
     @GetMapping("/jian")
-    public ResponseEntity<StudentDTO> findStudent(String id){
-        StudentDTO studentDTO = new StudentDTO();
-        studentDTO = mysqlService.findAStudent(id);
+    public ResponseEntity<StudentDTO> findStudent(@ApiParam(value = "学生Id")@RequestParam(value = "id") String id){
+
+        StudentDTO studentDTO = mysqlService.findAStudent(id);
         if (studentDTO !=null ) {
             return ResponseEntity.ok(studentDTO);
         }
-        return ResponseEntity.ok(studentDTO);
+        return null;
     }
 
     @ApiOperation("获取所有学生列表")
@@ -68,23 +70,9 @@ public class TestApi {
         log.debug("REST TO CREAT STUDENT {}",studentDTO);
         log.info("REST TO CREAT STUDENT {}",studentDTO);
         Student student = mysqlService.creatStudent(studentDTO);
-        System.out.println(student);
-//        StudentDTO studentDTO1 = studentMapper.toDto(student);
-//        System.out.println(studentDTO1);
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("wangjianjie","handsome");
         return new ResponseEntity<>(student,httpHeaders, HttpStatus.OK);
-    }
-
-    @Deprecated
-    @ApiOperation("完整获取中国地区IP")
-    @GetMapping("/aa")
-    public ResponseEntity<List<String>> aa(){
-        System.out.println("stat aa");
-        List<String> list = stringSplitService.jie();
-        System.out.println("end aa");
-        System.out.println(list);
-        return ResponseEntity.ok(list);
     }
 
     @ApiOperation("HttpURLConnection获取中国地区IP")
@@ -96,12 +84,10 @@ public class TestApi {
         return ResponseEntity.ok(s);
     }
 
-    @ApiOperation("计算当天创建的人数")
+    @ApiOperation("计算当天创建的人中某个学校的人数")
     @GetMapping("/count")
-    public ResponseEntity<Integer> count(@RequestParam(required = true) String name){
-        System.out.println("stat bb");
-        Integer s = studentService.countStudent(name);
-        System.out.println("end  bb");
+    public ResponseEntity<Integer> count(@ApiParam(value = "学校名") @RequestParam(value = "schoolName") String schoolName){
+        Integer s = studentService.countStudent(schoolName);
         return ResponseEntity.ok(s);
     }
 
