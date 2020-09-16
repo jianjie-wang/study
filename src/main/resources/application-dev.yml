@@ -35,5 +35,10 @@ spring:
 #      hibernate.ddl_auto: update
 #      hibernate.show_sql: false    #显示sql
 
+
+  elasticsearch:
+    rest:
+      uris: http://192.168.1.3:9090
+
 wjj:
   name: jj
