@@ -77,9 +77,9 @@ public class StudentResource {
 
     @ApiOperation("5.搜索学生（spring date jpa Specification 复杂查询）")
     @PostMapping("/specification")
-    public ResponseEntity<Page<Student>> getList(@ApiParam(value = "搜索条件") @RequestBody StudentDTO studentDTO, Pageable pageable){
+    public ResponseEntity<Page<Student>> getList(@ApiParam(value = "搜索条件") @RequestBody StudentDTO studentDTO,Long startTime,Long endTime, Pageable pageable){
 
-        Page<Student> studentS  = studentService.specification(studentDTO,pageable);
+        Page<Student> studentS  = studentService.specification(studentDTO,pageable,startTime,endTime);
         return ResponseEntity.ok(studentS);
     }
 

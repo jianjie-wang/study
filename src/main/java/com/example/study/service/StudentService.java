@@ -11,7 +11,6 @@ import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -95,26 +94,39 @@ public class StudentService {
         return ExcelUtils.getUploadExportData("学生明细表", result);
     }
 
-    public Page<Student> specification(StudentDTO studentDTO , Pageable pageable){
+    public Page<Student> specification(StudentDTO studentDTO , Pageable pageable,Long startTime,Long endTime){
 
         Specification<Student> sp = (root ,criteriaQuery,criteriaBuilder)->{
             List<Predicate> predicateList = new ArrayList<>();
-            if (studentDTO.getName()!=null){
-                Path<String> name = root.get("name");
-                Predicate p = criteriaBuilder.equal(name,studentDTO.getName());
+
+            //开始时间
+            if (startTime != null) {
+                Path<Instant> createdTime = root.get("createdTime");
+                Predicate p = criteriaBuilder.greaterThanOrEqualTo(createdTime, DateUtil.formatStartTime(startTime));
                 predicateList.add(p);
             }
 
-            if ( !"null".equals(String.valueOf(studentDTO.getAge()))  ){
+            //搜索结算时间
+            if (endTime != null) {
+                Path<Instant> createdTime = root.get("createdTime");
+                Predicate p = criteriaBuilder.lessThanOrEqualTo(createdTime, DateUtil.formatEndTime(endTime));
+                predicateList.add(p);
+            }
 
+            //年龄筛选
+            if ( !"null".equals(String.valueOf(studentDTO.getAge()))  ){
                 Path<Integer> age =root.get("age");
                 Predicate p = criteriaBuilder.equal(age,studentDTO.getAge());
                 predicateList.add(p);
             }
 
-            if (studentDTO.getSchool()!=null){
+            //姓名学校模糊查询
+            if (studentDTO.getSchool()!=null||studentDTO.getName()!=null){
+                Path<String> name  = root.get("name");
                 Path<String> school = root.get("school");
-                Predicate p = criteriaBuilder.equal(school,studentDTO.getSchool());
+                Predicate p1 = criteriaBuilder.like(name,studentDTO.getName());
+                Predicate p2 = criteriaBuilder.like(school,studentDTO.getSchool());
+                Predicate p = criteriaBuilder.or(p1, p2);
                 predicateList.add(p);
             }
 
