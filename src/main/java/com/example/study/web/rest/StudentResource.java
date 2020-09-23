@@ -9,6 +9,8 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -73,7 +75,15 @@ public class StudentResource {
         return ResponseEntity.ok(s);
     }
 
-    @ApiOperation("5.导出列表")
+    @ApiOperation("5.搜索学生（spring date jpa Specification 复杂查询）")
+    @PostMapping("/specification")
+    public ResponseEntity<Page<Student>> getList(@ApiParam(value = "搜索条件") @RequestBody StudentDTO studentDTO, Pageable pageable){
+
+        Page<Student> studentS  = studentService.specification(studentDTO,pageable);
+        return ResponseEntity.ok(studentS);
+    }
+
+    @ApiOperation("6.导出列表")
     @GetMapping
     public void exportExcel(){
 
