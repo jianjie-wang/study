@@ -2,7 +2,7 @@ server:
   port: 8443
   # classpath就是指目录 src/main/resources/
    ssl:
-       key-store: classpath:keystore.p12
+       key-store: classpath:config/tls/keystore.p12
        key-store-password: 123456
        keyStoreType: PKCS12
        keyAlias: tomcat
