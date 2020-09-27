@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: dev
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
@@ -12,15 +14,6 @@ spring:
     database: MYSQL
     show-sql: true
     properties:
-
-#      hibernate.cache.use_second_level_cache: true
-#      hibernate.cache.use_query_cache: false
-#      hibernate.cache.region_prefix: hibernate
-#      hibernate.cache.region.factory_class: com.hazelcast.hibernate.HazelcastCacheRegionFactory
-#      hibernate.cache.hazelcast.instance_name: AoCampaignSales
-#      hibernate.cache.use_minimal_puts: true
-#      hibernate.cache.hazelcast.use_lite_member: true
-
       hibernate.id.new_generator_mappings: true
       hibernate.connection.provider_disables_autocommit: false  #ao true
       hibernate.generate_statistics: false  #生成统计日志 ao true
@@ -28,13 +21,11 @@ spring:
       hibernate.jdbc.batch_versioned_data: true
       hibernate.order_inserts: true
       hibernate.order_updates: true
-
 #      hibernate.dialect: org.hibernate.dialect.MySQLInnoDBDialect
 #      hibernate.new_generator_mappings: false
 #      hibernate.format_sql: true
 #      hibernate.ddl_auto: update
 #      hibernate.show_sql: false    #显示sql
-
 
   elasticsearch:
     rest:
@@ -42,3 +33,6 @@ spring:
 
 wjj:
   name: jj
+
+server:
+  port: 8098
