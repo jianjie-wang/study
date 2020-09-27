@@ -5,13 +5,13 @@ import org.springframework.stereotype.Component;
 
 /**
  * @program: study
- * @description: wangjianjie handsome
+ * @description: wangJJ handsome
  * @author: WangJJ
  * @create: 2020-07-06 14:50
  **/
 @Component
-@ConfigurationProperties(prefix = "wjj")
-public class WangjianjieProperties {
+@ConfigurationProperties(prefix = "student")
+public class StudentNameProperties {
 
     private String name;
 

@@ -14,8 +14,11 @@ spring:
     properties:
       hibernate.id.new_generator_mappings: true
       hibernate.connection.provider_disables_autocommit: false
-      hibernate.generate_statistics: true
+      hibernate.generate_statistics: false
       hibernate.jdbc.batch_size: 50
       hibernate.jdbc.batch_versioned_data: true
       hibernate.order_inserts: true
       hibernate.order_updates: true
+
+student:
+  name: 不粘锅
