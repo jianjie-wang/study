@@ -11,8 +11,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 import org.springframework.retry.annotation.EnableRetry;
 
+import javax.annotation.PostConstruct;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.Arrays;
+import java.util.Collection;
 
 @ComponentScan(basePackages = "com.example")
 @ServletComponentScan(basePackages = "com.example")
@@ -20,6 +23,27 @@ import java.net.UnknownHostException;
 @EnableRetry  //启用重试功能
 public class StudyApplication {
     private static final Logger log = LoggerFactory.getLogger(StudyApplication.class);
+
+    private final Environment env;
+
+    public StudyApplication(Environment env) {
+        this.env = env;
+    }
+
+    @PostConstruct
+    public void initApplication() {
+        System.out.print("===========================initApplication");
+        Collection<String> activeProfiles = Arrays.asList(env.getActiveProfiles());
+        if (activeProfiles.contains("dev") && activeProfiles.contains("prod")) {
+            log.error("You have misconfigured your application! It should not run " +
+                    "with both the 'dev' and 'prod' profiles at the same time.");
+        }
+        if (activeProfiles.contains("dev") && activeProfiles.contains("cloud")) {
+            log.error("You have misconfigured your application! It should not" +
+                    "run with both the 'dev' and 'cloud' profiles at the same time.");
+        }
+    }
+
 
     public static void main(String[] args) {
 //        SpringApplication.run(StudyApplication.class, args);
