@@ -34,14 +34,14 @@ public class SetService {
         System.out.println("Order of objects in TreeSet :" + treeSet);
 
         Set<String> hashset = new HashSet<>();
-        hashset.add("王健杰");
+        hashset.add("王健");
         hashset.add("王健林");
         hashset.add("健哥哥");
         hashset.add("嘀嘀嘀");
         System.out.println("HashSet"+hashset);
 
         Set<String> treeset = new TreeSet<>();
-        treeset.add("王健杰");
+        treeset.add("王健");
         treeset.add("王健林");
         treeset.add("健哥哥");
         treeset.add("嘀嘀嘀");

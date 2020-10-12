@@ -15,11 +15,10 @@ import java.util.List;
 @Service
 public class StreamLamada {
 
-    StudentDTO studentDTO = new StudentDTO();
-
-    public  List<StudentDTO> stt(){
+    public List<StudentDTO> stt(){
         List<StudentDTO> studentDTOS = new ArrayList<>();
-        for (int i=0 ; i<9; i++) {
+        for (int i = 0 ; i<=9; i++) {
+            StudentDTO studentDTO = new StudentDTO();
             studentDTO.setName("name"+i);
             studentDTO.setAge(i);
             studentDTO.setSchool("school"+i);
@@ -31,4 +30,12 @@ public class StreamLamada {
         System.out.println(o);
         return studentDTOS;
     }
+
+    public static void main(String[] args) {
+        StreamLamada streamLamada = new StreamLamada();
+        List<StudentDTO> studentDTOS = streamLamada.stt();
+        System.out.println(studentDTOS);
+    }
+
+
 }

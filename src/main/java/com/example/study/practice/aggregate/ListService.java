@@ -18,14 +18,14 @@ public class ListService {
 
     public static void listJiHe(){
         List<String> liebiao = new ArrayList<String>();
-        liebiao.add("王健杰");
+        liebiao.add("王健");
         liebiao.add("王健林");
         liebiao.add("健哥哥");
         liebiao.add("嘀嘀嘀");
         System.out.println("ArrayList"+liebiao);
 
         List<String> liebi = new LinkedList<String>();
-        liebi.add("王健杰");
+        liebi.add("王健");
         liebi.add("王健林");
         liebi.add("健哥哥");
         liebi.add("嘀嘀嘀");

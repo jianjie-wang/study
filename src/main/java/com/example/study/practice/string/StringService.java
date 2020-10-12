@@ -39,17 +39,21 @@ public class StringService {
     public void load() {
         // 假设有一串字符串 96558&JQKA
         String asd = "96528&JQKA";
+
         // 想让它以&符号分离
         String[] sp = asd.split("&");
+
         // 直接输出该数组
-        System.out.println("直接输出数组：" + sp);           //直接输出数组：[Ljava.lang.String;@2b9627bc
+        System.out.println("直接输出数组：" + sp);               //直接输出数组：[Ljava.lang.String;@2b9627bc
+
         // toString一下
         String dString = sp.toString();
-        // 再输出
         System.out.println("toString输出数组：" + dString); // toString输出数组：[Ljava.lang.String;@2b9627bc
+
         // 用这转一下再输出(...源码其实就是循环数组再拼成一个字符串......)
         System.err.println("啦啦啦" + Arrays.toString(sp));// 啦啦啦[96528, JQKA]
-        // 指定位置截取。1,3简单表示：1表示下标为1开始截取(数组下标从0开始)0,3表示下标为3结束。
+
+        // 指定位置截取。1表示下标为1开始截取(数组下标从0开始),3表示下标为3结束。
         String string = asd.substring(1, 3);
         // 输出
         System.out.println("分离sub:" + string);    //分离sub:65
