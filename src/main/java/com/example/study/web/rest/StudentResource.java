@@ -60,10 +60,10 @@ public class StudentResource {
 
     @ApiOperation("3.获取所有学生列表")
     @GetMapping("/jj")
-    public List<StudentDTO> fdjf(){
+    public ResponseEntity<List<StudentDTO>> fdjf(){
         List<StudentDTO> studentDTOS = studentService.findStudent();
         if (studentDTOS!=null) {
-            return studentDTOS;
+            return ResponseEntity.ok(studentDTOS);
         }
         return null;
     }
