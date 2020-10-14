@@ -4,6 +4,7 @@ package com.example.study.web.rest;
 import com.example.study.domain.Student;
 import com.example.study.service.DTO.StudentDTO;
 import com.example.study.service.StudentService;
+import com.example.study.service.VM.StudentVM;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -38,10 +39,9 @@ public class StudentResource {
 
     @ApiOperation("1.添加一个学生信息")
     @PostMapping("/created")
-    public ResponseEntity<Student> createdStudet(@RequestBody StudentDTO studentDTO){
-        log.debug("REST TO CREAT STUDENT {}",studentDTO);
-        log.info("REST TO CREAT STUDENT {}",studentDTO);
-        Student student = studentService.creatStudent(studentDTO);
+    public ResponseEntity<Student> createdStudet(@RequestBody StudentVM studentVM){
+        log.info("REST TO CREAT STUDENT {}",studentVM);
+        Student student = studentService.creatStudent(studentVM);
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("wangjianjie","handsome");
         return new ResponseEntity<>(student,httpHeaders, HttpStatus.OK);

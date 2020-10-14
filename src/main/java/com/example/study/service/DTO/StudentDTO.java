@@ -33,16 +33,22 @@ public class StudentDTO implements Serializable {
 
     private Instant lastModifiedTime ;
 
+    private Boolean delFlag;
+
+    public Boolean getDelFlag() {
+        return delFlag;
+    }
+
+    public void setDelFlag(Boolean delFlag) {
+        this.delFlag = delFlag;
+    }
+
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
     }
 
     public String getCreatedBy() {
@@ -93,7 +99,6 @@ public class StudentDTO implements Serializable {
         School = school;
     }
 
-
     public int getAge() {
         return age;
     }
@@ -113,6 +118,7 @@ public class StudentDTO implements Serializable {
                 ", createdTime=" + createdTime +
                 ", lastModifiedBy='" + lastModifiedBy + '\'' +
                 ", lastModifiedTime=" + lastModifiedTime +
+                ", delFlag=" + delFlag +
                 '}';
     }
 }

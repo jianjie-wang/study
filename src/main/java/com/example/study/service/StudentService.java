@@ -6,6 +6,7 @@ import com.example.study.Utils.ExcelUtils;
 import com.example.study.domain.Student;
 import com.example.study.repository.StudentRepository;
 import com.example.study.service.DTO.StudentDTO;
+import com.example.study.service.VM.StudentVM;
 import com.example.study.service.mapper.StudentMapper;
 import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
@@ -76,7 +77,16 @@ public class StudentService {
         return  studentDTO;
     }
 
-    public Student creatStudent(StudentDTO studentDTO){
+    public Student creatStudent(StudentVM studentVM){
+        StudentDTO studentDTO = new StudentDTO();
+        studentDTO.setName(studentVM.getName());
+        studentDTO.setSchool(studentVM.getSchool());
+        studentDTO.setAge(studentVM.getAge());
+        studentDTO.setCreatedBy(studentVM.getName());
+        studentDTO.setCreatedTime(Instant.now());
+        studentDTO.setLastModifiedTime(Instant.now());
+        studentDTO.setLastModifiedBy(studentVM.getName());
+        studentDTO.setDelFlag(false);
         Student student = studentRepository.save(studentMapper.toEntity(studentDTO));
         return student;
     }
