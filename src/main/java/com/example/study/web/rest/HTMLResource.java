@@ -31,6 +31,11 @@ public class HTMLResource {
         this.getHTMLService = getHTMLService;
     }
 
+    /**
+     * 原始状态：
+     *   apnic |          CN        |  ipv4  |1.2.2.0|   256  |20110331|assigned
+     * 等级机构|获得该IP段的国家/组织|资源类型| 起始IP |IP段长度|分配日期|分配状态
+     */
     @ApiOperation("1.HttpURLConnection获取中国地区IP")
     @GetMapping("/bb")
     public ResponseEntity<String> bb(){
