@@ -1,9 +1,11 @@
 package com.example.study.web.rest;
 
+import com.example.study.config.StudentNameProperties;
 import com.example.study.service.DTO.EsBlogDTO;
 import com.example.study.service.EsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -26,7 +28,6 @@ public class EsRepository {
     private final Logger log = LoggerFactory.getLogger(EsRepository.class);
 
     private final EsService esService;
-
     public EsRepository(EsService esService) {
         this.esService = esService;
     }
@@ -39,6 +40,5 @@ public class EsRepository {
 
         return ResponseEntity.ok(esBlogDTOS);
     }
-
 
 }

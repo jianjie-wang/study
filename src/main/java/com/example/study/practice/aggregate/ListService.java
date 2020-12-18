@@ -15,7 +15,9 @@ import java.util.List;
 @Service
 public class ListService {
 
-
+    public static void main(String[] args) {
+        listJiHe();
+    }
     public static void listJiHe(){
         List<String> liebiao = new ArrayList<String>();
         liebiao.add("王健");
@@ -26,12 +28,14 @@ public class ListService {
 
         List<String> liebi = new LinkedList<String>();
         liebi.add("王健");
-        liebi.add("王健林");
-        liebi.add("健哥哥");
+        liebi.add("王健林e");
+        liebi.add("健哥哥e");
         liebi.add("嘀嘀嘀");
         System.out.println("LinkedList"+liebi);
 
-
+        //取交集
+        liebiao.retainAll(liebi);
+        System.out.println(liebiao);
 
     }
 }

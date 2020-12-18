@@ -33,6 +33,7 @@ spring:
 
 student:
   name: 不粘锅-dev
+  sex:
 
 server:
   port: 8098

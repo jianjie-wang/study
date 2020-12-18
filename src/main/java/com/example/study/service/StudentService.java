@@ -1,10 +1,13 @@
 package com.example.study.service;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.study.Utils.DateUtil;
 import com.example.study.Utils.ExcelUtils;
+import com.example.study.Utils.HttpUtil;
 import com.example.study.domain.Student;
 import com.example.study.repository.StudentRepository;
+import com.example.study.service.DTO.RuiTaiActivityVM;
 import com.example.study.service.DTO.StudentDTO;
 import com.example.study.service.VM.StudentVM;
 import com.example.study.service.mapper.StudentMapper;
@@ -21,11 +24,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @program: study
@@ -65,6 +67,12 @@ public class StudentService {
 
     public List<StudentDTO> findStudent(){
         List<Student> students = studentRepository.findAll();
+        List<StudentDTO> studentDTOs = studentMapper.toDto(students);
+        return studentDTOs;
+    }
+
+    public List<StudentDTO> findStudenft(){
+        List<Student> students = studentRepository.findAllByLastModifiedTimeAfter(Instant.now());
         List<StudentDTO> studentDTOs = studentMapper.toDto(students);
         return studentDTOs;
     }
@@ -154,5 +162,32 @@ public class StudentService {
         return students;
     }
 
+    /**
+     * 获取CDP全部卡券信息
+     *
+     * @param ruiTaiActivityVM
+     * @return
+     */
+    public String getPackageActivities(RuiTaiActivityVM ruiTaiActivityVM) {
+        JSONObject param = new JSONObject();
+        param.put("rspIncludeStores", ruiTaiActivityVM.isRspIncludeStores());
+        param.put("rspStartDate", ruiTaiActivityVM.getRspStartDate());
+        param.put("rspStopDate", ruiTaiActivityVM.getRspStopDate());
+        param.put("rspPageIndex", ruiTaiActivityVM.getRspPageIndex());
+        param.put("rspPageSize", ruiTaiActivityVM.getRspPageSize());
 
+        JSONObject params = new JSONObject();
+        params.put("ResponseBody", param);
+        params.put("Token", "30611fc475f8161eb3eef36b3890c848");
+        String data = params.toString();
+        log.info("入参{}", data);
+        String result1 = HttpUtil.doPost("http://58.213.111.20:8094///////", data);
+        String result = null;
+        try {
+            result = URLDecoder.decode(result1, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 }

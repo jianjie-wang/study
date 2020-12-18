@@ -48,10 +48,10 @@ public class ExcelUtils {
         // 第四步，创建单元格，并设置值表头 设置表头居中
         XSSFFont font = wb.createFont();
         font.setFontHeightInPoints((short) 10);
-        font.setBoldweight(XSSFFont.BOLDWEIGHT_BOLD);
+//        font.setBoldweight(XSSFFont.BOLDWEIGHT_BOLD);
         // 把字体应用到当前的样式
         XSSFCellStyle style = wb.createCellStyle();
-        style.setAlignment(XSSFCellStyle.ALIGN_CENTER); // 创建一个居中格式
+//        style.setAlignment(XSSFCellStyle.ALIGN_CENTER); // 创建一个居中格式
         style.setFont(font);
         Set<String> keys = list.get(0).keySet();
         int keyIndex = 0;

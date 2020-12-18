@@ -2,6 +2,7 @@ package com.example.study.web.rest;
 
 
 import com.example.study.domain.Student;
+import com.example.study.service.DTO.RuiTaiActivityVM;
 import com.example.study.service.DTO.StudentDTO;
 import com.example.study.service.StudentService;
 import com.example.study.service.VM.StudentVM;
@@ -89,4 +90,21 @@ public class StudentResource {
 
     }
 
+    @ApiOperation("3.获取所有学生列表")
+    @GetMapping("/jjfgf")
+    public ResponseEntity<List<StudentDTO>> fdjgfgff(){
+        List<StudentDTO> studentDTOS = studentService.findStudenft();
+        if (studentDTOS!=null) {
+            return ResponseEntity.ok(studentDTOS);
+        }
+        return null;
+    }
+
+    @ApiOperation(value = "1.获取权益列表(测试)")
+    @PostMapping("/activities/cdp/list")
+    public ResponseEntity getPackageActivities(@RequestBody RuiTaiActivityVM ruiTaiActivityVM){
+
+        String result = studentService.getPackageActivities(ruiTaiActivityVM);
+        return ResponseEntity.ok(result);
+    }
 }
