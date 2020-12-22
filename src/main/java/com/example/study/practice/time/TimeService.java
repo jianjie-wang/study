@@ -23,8 +23,6 @@ import java.util.concurrent.TimeUnit;
 public class TimeService {
     public static void main(String[] args) {
 
-        //T表示分隔符，Z表示的是UTC。
-        //UTC：世界标准时间，在标准时间上加上8小时，即东八区时间，也就是北京时间。(Instant)
         try {
             System.out.println("----------------------------------Instant类型String转date");
             String dateTime = "2020-01-13T16:00:00.000Z";
@@ -88,6 +86,8 @@ public class TimeService {
             e.printStackTrace();
         }
 
+        //T表示分隔符，Z表示的是UTC。
+        //UTC：世界标准时间，在标准时间上加上8小时，即东八区时间，也就是北京时间。(Instant)
         Date date = new Date();//周月日时分秒年     Fri Dec 18 15:13:03 CST 2020
         //数据库的三种类都继承了java.util.Date，在除了数据库的情况下使用
         Date sDate = new java.sql.Date(date.getTime());//年月日   2020-12-18
