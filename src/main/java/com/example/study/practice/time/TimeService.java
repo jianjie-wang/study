@@ -23,6 +23,11 @@ import java.util.concurrent.TimeUnit;
 public class TimeService {
     public static void main(String[] args) {
 
+        Instant ttt = DateUtil.formatStartTime(System.currentTimeMillis());  //2020-12-17T16:00:00Z
+        Instant act = ttt.plusMillis(86399000);//时间增加23:59:59
+        Instant fdf = ttt.plusSeconds(86399);  //时间增加23:59:59
+        Instant fgg = ttt.plusMillis(TimeUnit.HOURS.toMillis(8));//加8小时 2020-12-18T15:13:03.428Z
+
         try {
             System.out.println("----------------------------------Instant类型String转date");
             String dateTime = "2020-01-13T16:00:00.000Z";
