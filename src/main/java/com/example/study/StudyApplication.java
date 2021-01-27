@@ -17,7 +17,7 @@ import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.Collection;
 
-@ComponentScan(basePackages = "com.example")
+//@ComponentScan(basePackages = "com.example")
 @ServletComponentScan(basePackages = "com.example")
 @SpringBootApplication
 @EnableRetry  //启用重试功能

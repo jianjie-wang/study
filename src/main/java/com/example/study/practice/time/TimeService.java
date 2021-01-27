@@ -1,6 +1,7 @@
 package com.example.study.practice.time;
 
 import com.example.study.Utils.DateUtil;
+import org.springframework.util.StopWatch;
 
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -22,6 +23,10 @@ import java.util.concurrent.TimeUnit;
  **/
 public class TimeService {
     public static void main(String[] args) {
+
+        //计算方法中各段执行的时间，并打印小型报表
+        StopWatch stopWatch = new StopWatch("时间");
+        stopWatch.start("第一个");
 
         Instant ttt = DateUtil.formatStartTime(System.currentTimeMillis());  //2020-12-17T16:00:00Z
         Instant act = ttt.plusMillis(86399000);//时间增加23:59:59
@@ -46,6 +51,9 @@ public class TimeService {
             System.out.println("----> Exception: " + e.toString());
             e.printStackTrace();
         }
+
+        stopWatch.stop();
+        stopWatch.start("第二个");
 
         //文本和日期相互转换
         try {
@@ -95,7 +103,7 @@ public class TimeService {
         //UTC：世界标准时间，在标准时间上加上8小时，即东八区时间，也就是北京时间。(Instant)
         Date date = new Date();//周月日时分秒年     Fri Dec 18 15:13:03 CST 2020
         //数据库的三种类都继承了java.util.Date，在除了数据库的情况下使用
-        Date sDate = new java.sql.Date(date.getTime());//年月日   2020-12-18
+        Date sDate = new java.sql.Date(date.getTime());//年月日   2020-12-18·
         Time sTime = new Time(sDate.getTime());        //时分秒   15:13:03
         Timestamp sTimeStamp = new Timestamp(sTime.getTime());     //年月日时分秒毫秒  2020-12-18 15:13:03.426
         Instant instant = Instant.now();                                  //UTC时间   2020-12-18T07:13:03.428Z
@@ -122,5 +130,8 @@ public class TimeService {
         System.out.println("今日开始时间:" + startTime);
         System.out.println("今日结束时间:" + endTime);
         System.out.println("===================================");
+
+        stopWatch.stop();
+        System.out.println(stopWatch.prettyPrint());
     }
 }
